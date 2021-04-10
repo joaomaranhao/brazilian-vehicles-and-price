@@ -146,6 +146,25 @@ const Home: NextPage = () => {
         setVehicle(false)
       }}>Reset</button>
 
+      {price
+        ? <div><table>
+      <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Preço</th>
+      </tr>
+      <tr>
+        <td>{price.Marca}</td>
+        <td>{price.Modelo}</td>
+        <td>{price.AnoModelo}</td>
+        <td>{price.Valor}</td>
+      </tr>
+    </table>
+    <span>Tabela atualizada em {price.MesReferencia}</span></div>
+        : <table></table>
+    }
+
     </div>
   )
 }
