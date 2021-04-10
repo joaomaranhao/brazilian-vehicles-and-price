@@ -3,15 +3,30 @@ import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 
 const Home: NextPage = () => {
+  interface Car {
+    Valor: string
+    Marca: string
+    Modelo: string
+    AnoModelo: number
+    Combustivel: string
+    CodigoFipe: string
+    MesReferencia: string
+    TipoVeiculo: number
+    SiglaCombustivel: string
+  }
+
   const url = 'https://parallelum.com.br/fipe/api/v1/'
   const [vehicle, setVehicle] = useState(false)
   const [brands, setBrands] = useState([])
   const selectVehicle = (vehicle): void => {
     setVehicle(vehicle)
   }
-  const [brandCode, setBrandCode] = useState(undefined)
+  const [brandCode, setBrandCode] = useState('')
   const [models, setModels] = useState([])
-  const [modelCode, setModelCode] = useState(undefined)
+  const [modelCode, setModelCode] = useState('')
+  const [years, setYears] = useState([])
+  const [yearCode, setYearCode] = useState('')
+  const [price, setPrice] = useState<Car>()
 
   const http = async (request: RequestInfo): Promise<any> => {
     const response = await fetch(request)
@@ -25,6 +40,7 @@ const Home: NextPage = () => {
   }
 
   useEffect(() => {
+    reset()
     if (vehicle) {
       getBrands()
     }
@@ -36,10 +52,45 @@ const Home: NextPage = () => {
   }
 
   useEffect(() => {
+    setModelCode('')
+    setYears([])
     if (brandCode) {
       getModels()
     }
   }, [brandCode])
+
+  const getYears = async (): Promise<any> => {
+    const years = await http(`${url + vehicle}/marcas/${brandCode}/modelos/${modelCode}/anos`)
+    return setYears([...years])
+  }
+
+  useEffect(() => {
+    setYearCode('')
+    if (modelCode) {
+      getYears()
+    }
+  }, [modelCode])
+
+  const getPrice = async (): Promise<any> => {
+    if (vehicle && brandCode && modelCode && yearCode) {
+      try {
+        const price = await http(`${url + vehicle}/marcas/${brandCode}/modelos/${modelCode}/anos/${yearCode}`)
+        return setPrice({ ...price })
+      } catch (err) {
+        return new Error(err)
+      }
+    }
+  }
+
+  const reset = (): void => {
+    setBrands([])
+    setBrandCode('')
+    setModels([])
+    setModelCode('')
+    setYears([])
+    setYearCode('')
+    setPrice(undefined)
+  }
 
   return (
     <div>
@@ -75,6 +126,25 @@ const Home: NextPage = () => {
           })}
         </select>
       </div>
+
+      <div className={years.length > 0 ? 'block' : 'hidden'}>
+        <label htmlFor="cars">Selecione o ano:</label>
+
+        <select value={yearCode} onChange={(e) => setYearCode(e.target.value)}>
+          <option></option>
+          {years.map((year) => {
+            return <option value={year.codigo} key={year.codigo}>{year.nome}</option>
+          })}
+        </select>
+      </div>
+
+      <button onClick={async () => {
+        await getPrice()
+      }}>Consultar</button>
+      <button onClick={() => {
+        reset()
+        setVehicle(false)
+      }}>Reset</button>
 
     </div>
   )
