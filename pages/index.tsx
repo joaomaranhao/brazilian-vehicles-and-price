@@ -1,20 +1,21 @@
 import Head from 'next/head'
 import { NextPage } from 'next'
 import { useEffect, useState } from 'react'
+import Navbar from '../components/Navbar'
+
+interface Car {
+  Valor: string
+  Marca: string
+  Modelo: string
+  AnoModelo: number
+  Combustivel: string
+  CodigoFipe: string
+  MesReferencia: string
+  TipoVeiculo: number
+  SiglaCombustivel: string
+}
 
 const Home: NextPage = () => {
-  interface Car {
-    Valor: string
-    Marca: string
-    Modelo: string
-    AnoModelo: number
-    Combustivel: string
-    CodigoFipe: string
-    MesReferencia: string
-    TipoVeiculo: number
-    SiglaCombustivel: string
-  }
-
   const url = 'https://parallelum.com.br/fipe/api/v1/'
   const [vehicle, setVehicle] = useState(false)
   const [brands, setBrands] = useState([])
@@ -96,7 +97,11 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Tabela FIPE | Consulta de preços de veículos</title>
+
       </Head>
+      <div className="container lg">
+        <Navbar />
+
       <h1>Tabela FIPE</h1>
 
       <div>
@@ -160,11 +165,11 @@ const Home: NextPage = () => {
         <td>{price.AnoModelo}</td>
         <td>{price.Valor}</td>
       </tr>
-    </table>
-    <span>Tabela atualizada em {price.MesReferencia}</span></div>
+      </table>
+      <span>Tabela atualizada em {price.MesReferencia}</span></div>
         : <table></table>
-    }
-
+      }
+      </div>
     </div>
   )
 }
