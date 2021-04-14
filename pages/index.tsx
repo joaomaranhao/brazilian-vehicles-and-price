@@ -100,10 +100,11 @@ const Home: NextPage = () => {
         <title>Tabela FIPE | Consulta de preços de veículos</title>
 
       </Head>
-      <div className="container max-w-5xl">
+      <div className="h-screen flex flex-col justify-between">
+      <div className="container max-w-5xl flex flex-col">
         <Navbar />
 
-      <div className="flex">
+      <div className="flex relative">
         <div>
           <h1 className="text-3xl font-semibold ml-4 mt-8 mb-4">Quer saber o preço do seu próximo automóvel?</h1>
           <p className="ml-4 mb-8">Selecione o veículo e clique em buscar!</p>
@@ -129,7 +130,7 @@ const Home: NextPage = () => {
             </button>
           </div>
         </div>
-        <div className="hidden sm:block">
+        <div className={`hidden sm:block ${vehicle === 'caminhoes' ? 'relative bottom-16' : ''}`}>
           <img src={`/images/${vehicle === '' ? 'carros' : vehicle}.png`} alt="Carro"/>
         </div>
       </div>
@@ -207,6 +208,10 @@ const Home: NextPage = () => {
           </div>
         : <table></table>
       }
+      </div>
+      <footer className="flex justify-center py-4">
+        <p>Feito por João Maranhão © 2021</p>
+      </footer>
       </div>
     </div>
   )

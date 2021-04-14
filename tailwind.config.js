@@ -6,7 +6,11 @@ module.exports = {
     container: {
       center: true
     },
-    extend: {}
+    extend: {
+      backgroundImage: theme => ({
+        'hero-pattern': "url('/images/rectangle.png')"
+      })
+    }
   },
   variants: {
     extend: {}
