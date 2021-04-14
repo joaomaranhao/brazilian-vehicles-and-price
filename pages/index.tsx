@@ -174,13 +174,13 @@ const Home: NextPage = () => {
       <div className="flex justify-between w-56 mx-auto mt-8">
         <button onClick={async () => {
           await getPrice()
-        }} className="bg-blue-600 text-gray-100 px-6 py-2 font-semibold
-        hover:bg-blue-500 duration-200 active:outline-none focus:outline-none">Consultar</button>
+        }} className="bg-blue-600 border-2 border-white text-gray-100 px-6 py-2 font-semibold
+        hover:bg-blue-500 duration-200 hover:border-blue-300 hover:border-2 active:outline-none focus:outline-none">Buscar</button>
         <button onClick={() => {
           reset()
           setVehicle('')
-        }} className="bg-blue-600 text-gray-100 px-6 py-2 font-semibold
-        hover:bg-blue-500 duration-200 active:outline-none focus:outline-none">Reset</button>
+        }} className="bg-blue-600 border-2 border-white text-gray-100 px-6 py-2 font-semibold
+        hover:bg-blue-500 duration-200 hover:border-blue-300 hover:border-2 active:outline-none focus:outline-none">Reset</button>
       </div>
 
       {price
@@ -204,7 +204,7 @@ const Home: NextPage = () => {
                 </tr>
               </tbody>
             </table>
-            <span className="block text-xs ml-auto text-right mr-3 mb-3">Tabela atualizada em {price.MesReferencia}</span>
+            <span className="block text-xs m-auto text-center mb-3">Tabela atualizada em {price.MesReferencia}</span>
           </div>
         : <table></table>
       }
