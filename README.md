@@ -1,6 +1,7 @@
 # Brazilian cars and prices inquiries service
 
-Responsive page created with NextJS and TailwindCSS consuming a JSON API from https://deividfortuna.github.io/fipe/
+Live website can be found [here!](https://brazilian-vehicles-and-price-l5lpnpohz-joaomaranhao.vercel.app/)  
+Responsive page created with NextJS and TailwindCSS consuming a [JSON API](https://deividfortuna.github.io/fipe/)
 
 Desktop View             |  Mobile View
 :-------------------------:|:-------------------------:
