@@ -185,7 +185,7 @@ const Home: NextPage = () => {
 
       {price
         ? <div>
-            <table className=' container lg mt-8 mx-auto max-w-4xl w-2/3 whitespace-nowrap rounded-lg
+            <table className=' container lg mt-8 mx-auto max-w-4xl w-2/3 rounded-lg
             bg-white divide-y divide-gray-300 overflow-hidden'>
               <thead className="bg-gray-50">
                 <tr className="text-gray-600 text-left">
