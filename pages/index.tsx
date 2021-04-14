@@ -100,32 +100,37 @@ const Home: NextPage = () => {
         <title>Tabela FIPE | Consulta de preços de veículos</title>
 
       </Head>
-      <div className="container lg">
+      <div className="container max-w-5xl">
         <Navbar />
 
-      <div>
-        <h1 className="text-3xl font-semibold ml-4 mt-8 mb-4">Quer saber o preço do seu próximo automóvel?</h1>
-        <p className="ml-4 mb-8">Selecione o veículo e clique em buscar!</p>
+      <div className="flex">
+        <div>
+          <h1 className="text-3xl font-semibold ml-4 mt-8 mb-4">Quer saber o preço do seu próximo automóvel?</h1>
+          <p className="ml-4 mb-8">Selecione o veículo e clique em buscar!</p>
 
-        <div className="flex w-80 justify-between mx-auto mb-8">
-          <button onClick={() => selectVehicle('carros')}
-          className={`border-2 border-gray-500 rounded-2xl bg-gray-100 px-6 py-4 text-gray-600 shadow-lg
-          hover:bg-blue-500 hover:text-gray-50 hover:border-blue-200 active:outline-none focus:outline-none
-          ${vehicle === 'carros' ? 'bg-blue-500 text-gray-50 border-blue-200' : ''}`}>
-            <FaCarSide />
-          </button>
-          <button onClick={() => selectVehicle('motos')}
-          className={`border-2 border-gray-500 rounded-2xl bg-gray-100 px-6 py-4 text-gray-600 shadow-lg
-          hover:bg-blue-500 hover:text-gray-50 hover:border-blue-200 active:outline-none focus:outline-none
-          ${vehicle === 'motos' ? 'bg-blue-500 text-gray-50 border-blue-200' : ''}`}>
-            <FaMotorcycle />
-          </button>
-          <button onClick={() => selectVehicle('caminhoes')}
-          className={`border-2 border-gray-500 rounded-2xl bg-gray-100 px-6 py-4 text-gray-600 shadow-lg
-          hover:bg-blue-500 hover:text-gray-50 hover:border-blue-200 active:outline-none focus:outline-none
-          ${vehicle === 'caminhoes' ? 'bg-blue-500 text-gray-50 border-blue-200' : ''}`}>
-            <FaTruck />
-          </button>
+          <div className="flex w-80 sm:w-60 justify-between mx-auto sm:ml-6 sm:mt-16 mb-8">
+            <button onClick={() => selectVehicle('carros')}
+            className={`border-2 border-gray-500 rounded-2xl bg-gray-100 px-6 py-4 text-gray-600 shadow-lg
+            hover:bg-blue-500 hover:text-gray-50 hover:border-blue-200 active:outline-none focus:outline-none
+            ${vehicle === 'carros' ? 'bg-blue-500 text-gray-50 border-blue-200' : ''}`}>
+              <FaCarSide />
+            </button>
+            <button onClick={() => selectVehicle('motos')}
+            className={`border-2 border-gray-500 rounded-2xl bg-gray-100 px-6 py-4 text-gray-600 shadow-lg
+            hover:bg-blue-500 hover:text-gray-50 hover:border-blue-200 active:outline-none focus:outline-none
+            ${vehicle === 'motos' ? 'bg-blue-500 text-gray-50 border-blue-200' : ''}`}>
+              <FaMotorcycle />
+            </button>
+            <button onClick={() => selectVehicle('caminhoes')}
+            className={`border-2 border-gray-500 rounded-2xl bg-gray-100 px-6 py-4 text-gray-600 shadow-lg
+            hover:bg-blue-500 hover:text-gray-50 hover:border-blue-200 active:outline-none focus:outline-none
+            ${vehicle === 'caminhoes' ? 'bg-blue-500 text-gray-50 border-blue-200' : ''}`}>
+              <FaTruck />
+            </button>
+          </div>
+        </div>
+        <div className="hidden sm:block">
+          <img src={`/images/${vehicle === '' ? 'carros' : vehicle}.png`} alt="Carro"/>
         </div>
       </div>
 
